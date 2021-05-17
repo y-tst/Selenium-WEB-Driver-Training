@@ -27,10 +27,9 @@ public class googleSearchForWikiEdge {
         System.setProperty("webdriver.edge.driver", "src/test/resources/msedgedriver.exe");
 
         WebDriver driver = new EdgeDriver();
-        driver.manage().window().maximize();
 
         driver.get("http://google.com");
-        new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfElementLocated(By.name("q")));
+        driver.manage().window().maximize();
 
         WebElement googleSearchField = new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfElementLocated(By.name("q")));
         googleSearchField.sendKeys("wikipedia");

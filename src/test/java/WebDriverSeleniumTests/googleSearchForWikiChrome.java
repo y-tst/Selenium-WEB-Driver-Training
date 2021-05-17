@@ -33,7 +33,6 @@ public class googleSearchForWikiChrome {
         WebDriver driver = new ChromeDriver(chromeoptions);
 
         driver.get("http://google.com");
-        new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfElementLocated(By.name("q")));
         driver.manage().window().maximize();
 
         WebElement googleSearchField = new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfElementLocated(By.name("q")));
