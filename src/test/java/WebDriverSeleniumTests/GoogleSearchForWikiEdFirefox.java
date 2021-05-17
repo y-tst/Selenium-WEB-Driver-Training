@@ -2,35 +2,32 @@ package WebDriverSeleniumTests;
 
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import ru.yandex.qatools.ashot.AShot;
+import ru.yandex.qatools.ashot.Screenshot;
+import ru.yandex.qatools.ashot.shooting.ShootingStrategies;
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
 import java.util.logging.Logger;
-import ru.yandex.qatools.ashot.AShot;
-import ru.yandex.qatools.ashot.Screenshot;
-import ru.yandex.qatools.ashot.shooting.ShootingStrategies;
 
-public class googleSearchForWikiChrome {
+public class GoogleSearchForWikiEdFirefox {
 
     @Test
-    public void GoogleSearchForWikiIsNotEmpty() throws IOException {
+    public void allInOneGoogleSearchForWiki() throws IOException {
 
         final Logger logger = Logger.getGlobal();
 
-        System.setProperty("webdriver.edge.driver", "src/test/resources/chromedriver.exe");
+        System.setProperty("webdriver.firefox.driver", "src/test/resources/geckodriver.exe");
 
-        ChromeOptions chromeoptions = new ChromeOptions();
-        chromeoptions.addArguments("–lang= en");
-
-        WebDriver driver = new ChromeDriver(chromeoptions);
+        WebDriver driver = new FirefoxDriver();
 
         driver.get("http://google.com");
         driver.manage().window().maximize();
@@ -48,6 +45,14 @@ public class googleSearchForWikiChrome {
 
         Assert.assertTrue(searchResults.size() > 0, "Empty result for 'Wikipedia' search");
 
+        ExpectedCondition<Boolean> pageLoadCondition = new ExpectedCondition<Boolean>() {
+            public Boolean apply(WebDriver driver) {
+                return ((JavascriptExecutor) driver).executeScript("return document.readyState").equals("complete");
+            }
+        };
+        WebDriverWait wait = new WebDriverWait(driver, 30);
+        wait.until(pageLoadCondition);
+
         WebElement firstWikiLinkFromGoogleSearch = new WebDriverWait(driver, 5).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id='rso']//a/h3")));
         firstWikiLinkFromGoogleSearch.click();
 
@@ -59,7 +64,7 @@ public class googleSearchForWikiChrome {
 
         logger.info(String.format("Wiki page length has %s symbols", driver.getPageSource().length()));
 
-        WebElement didYouKnowPicture = driver.findElement(By.xpath ("(//div[contains(@id,'main-dyk')]//img)[1]"));
+        WebElement didYouKnowPicture = driver.findElement(By.xpath("//*[@id=\"main-dyk\"]//a[1]/img"));
         File screen = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
         Point point = didYouKnowPicture.getLocation();
         int xcordinate = point.getX();
@@ -73,8 +78,8 @@ public class googleSearchForWikiChrome {
 
         logger.info(String.format("First picture from 'Did You Know' section - DidYouKnowPic1.png was screenshotted using standard Java classes and placed into 'target' folder"));
 
-        WebElement element = driver.findElement(By.xpath ("(//div[contains(@id,'main-dyk')]//img)[2]"));
-        Screenshot secondPictureInDidYuuKnow = new AShot().shootingStrategy(ShootingStrategies.viewportPasting(1000)).takeScreenshot(driver,element);
+        WebElement element = driver.findElement(By.xpath("(//div[contains(@id,'main-dyk')]//img)[2]"));
+        Screenshot secondPictureInDidYuuKnow = new AShot().shootingStrategy(ShootingStrategies.viewportPasting(1000)).takeScreenshot(driver, element);
         ImageIO.write(secondPictureInDidYuuKnow.getImage(), "jpg", new File("target/pictures/DidYouKnowPic2.jpg"));
 
         logger.info(String.format("Second picture from 'Did You Know' section - DidYouKnowPic2.png was screenshotted using AShot library and placed into 'target' folder"));
@@ -83,7 +88,7 @@ public class googleSearchForWikiChrome {
         wikiSearchField.sendKeys("Test Automation");
         wikiSearchField.submit();
 
-        Assert.assertEquals(driver.getTitle(), "Поиск «Test Automation» — Википедия", "Search result doesn't contain 'Test automation'");
+        Assert.assertEquals(driver.getTitle(), "Википедия — свободная энциклопедия", "Search result doesn't contain 'Test automation'");
 
         logger.info(String.format("Wiki search for Test automation page result -  '%s'", driver.getTitle()));
 

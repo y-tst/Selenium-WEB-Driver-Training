@@ -2,31 +2,37 @@ package WebDriverSeleniumTests;
 
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
-import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import ru.yandex.qatools.ashot.AShot;
-import ru.yandex.qatools.ashot.Screenshot;
-import ru.yandex.qatools.ashot.shooting.ShootingStrategies;
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
 import java.util.logging.Logger;
+import ru.yandex.qatools.ashot.AShot;
+import ru.yandex.qatools.ashot.Screenshot;
+import ru.yandex.qatools.ashot.shooting.ShootingStrategies;
+import org.openqa.selenium.JavascriptExecutor;
 
-public class googleSearchForWikiEdge {
+public class GoogleSearchForWikiChrome {
 
     @Test
-    public void GoogleSearchForWikiIsNotEmpty() throws IOException {
+    public void allInOneGoogleSearchForWiki() throws IOException {
 
         final Logger logger = Logger.getGlobal();
 
-        System.setProperty("webdriver.edge.driver", "src/test/resources/msedgedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver.exe");
 
-        WebDriver driver = new EdgeDriver();
+        ChromeOptions chromeoptions = new ChromeOptions();
+        chromeoptions.addArguments("–lang= en");
+
+        WebDriver driver = new ChromeDriver(chromeoptions);
 
         driver.get("http://google.com");
         driver.manage().window().maximize();
@@ -44,10 +50,18 @@ public class googleSearchForWikiEdge {
 
         Assert.assertTrue(searchResults.size() > 0, "Empty result for 'Wikipedia' search");
 
+        ExpectedCondition<Boolean> pageLoadCondition = new ExpectedCondition<Boolean>() {
+                    public Boolean apply(WebDriver driver) {
+                        return ((JavascriptExecutor) driver).executeScript("return document.readyState").equals("complete");
+                    }
+                };
+        WebDriverWait wait = new WebDriverWait(driver, 30);
+        wait.until(pageLoadCondition);
+
         WebElement firstWikiLinkFromGoogleSearch = new WebDriverWait(driver, 5).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id='rso']//a/h3")));
         firstWikiLinkFromGoogleSearch.click();
 
-        Assert.assertEquals(driver.getTitle(), "wikipedia - Пошук Google", "Different from the main Wiki page is opened");
+        Assert.assertEquals(driver.getTitle(), "Википедия — свободная энциклопедия", "Different from the main Wiki page is opened");
 
         logger.info(String.format("Wiki page title is '%s', it has length: %s symbols", driver.getTitle(), driver.getTitle().length()));
 
@@ -55,7 +69,7 @@ public class googleSearchForWikiEdge {
 
         logger.info(String.format("Wiki page length has %s symbols", driver.getPageSource().length()));
 
-        WebElement didYouKnowPicture = driver.findElement(By.xpath ("(//div[contains(@id,'main-dyk')]//img)[1]"));
+        WebElement didYouKnowPicture = driver.findElement(By.xpath ("//*[@id=\"main-dyk\"]//a[1]/img"));
         File screen = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
         Point point = didYouKnowPicture.getLocation();
         int xcordinate = point.getX();
