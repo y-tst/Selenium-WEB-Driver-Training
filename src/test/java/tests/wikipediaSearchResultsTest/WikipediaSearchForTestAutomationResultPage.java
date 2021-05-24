@@ -1,14 +1,14 @@
-package test.wikipediaSearchResultsTest;
+package tests.wikipediaSearchResultsTest;
 
-import test.BaseTest;
+import tests.BaseTest;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import page.WikipediaHomePage;
+import pages.WikipediaHomePage;
 
 public class WikipediaSearchForTestAutomationResultPage extends BaseTest {
 
     @Test
-    public void searchForTestAutomationCheck(){
+    public void searchForTestAutomationCheck() {
 
         String expectedTitleContentForTestAutomationSearch = new WikipediaHomePage(driver)
                 .openWikipediaPage()

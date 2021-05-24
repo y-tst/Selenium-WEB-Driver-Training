@@ -1,4 +1,4 @@
-package page;
+package pages;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
@@ -7,8 +7,6 @@ import org.openqa.selenium.support.PageFactory;
 public class WikipediaHomePage extends BasePage {
 
     private static final String WIKIPEDIA_HOMEPAGE_URL = "https://ru.wikipedia.org";
-
-    private WebDriver driver;
 
     @FindBy(name = "search")
     private WebElement wikiSearchField;
@@ -20,13 +18,12 @@ public class WikipediaHomePage extends BasePage {
     private WebElement imageForAShot;
 
     public WikipediaHomePage(WebDriver driver) {
-        this.driver = driver;
+        super(driver);
 
         PageFactory.initElements(driver, this);
     }
 
     public WikipediaHomePage openWikipediaPage() {
-        pageOpener(WIKIPEDIA_HOMEPAGE_URL);
         return this;
     }
 

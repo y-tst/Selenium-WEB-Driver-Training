@@ -1,4 +1,4 @@
-package page;
+package pages;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -7,9 +7,8 @@ import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
 
-public class GoogleSearchForWikipediaResultsPage extends BasePage{
+public class GoogleSearchForWikipediaResultsPage extends BasePage {
 
-    private WebDriver driver;
     private String searchTerm;
 
     private String wikiRelatedLocator = "//div[contains(@class, 'g') and contains(., 'wikipedia')]";
@@ -21,6 +20,7 @@ public class GoogleSearchForWikipediaResultsPage extends BasePage{
     private WebElement firstWikiLinkFromGoogleSearch;
 
     public GoogleSearchForWikipediaResultsPage(WebDriver driver, String searchTerm) {
+        super(driver);
         this.searchTerm = searchTerm;
         this.driver = driver;
         PageFactory.initElements(driver, this);
@@ -31,14 +31,14 @@ public class GoogleSearchForWikipediaResultsPage extends BasePage{
     }
 
     public String wikipediaPageTitle() {
-                return driver.getTitle();
+        return driver.getTitle();
     }
 
-    public String searchResultPageUrl(){
+    public String searchResultPageUrl() {
         return driver.getCurrentUrl();
     }
 
-    public int searchResultLength(){
+    public int searchResultLength() {
         return driver.getTitle().length();
     }
 

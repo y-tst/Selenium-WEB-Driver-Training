@@ -1,17 +1,16 @@
-package test.wikipediaMainPageTest;
+package tests.wikipediaMainPageTest;
 
-import test.BaseTest;
+import tests.BaseTest;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import page.GoogleHomePage;
+import pages.GoogleHomePage;
 
 public class WikipediaUrlTest extends BaseTest {
 
     @Test
-    public void googleSearchIsCorrectCheck(){
+    public void googleSearchIsCorrectCheck() {
 
         String googleForWikipediaSearchPageUrl = new GoogleHomePage(driver)
-                .openGooglePage()
                 .searchForTerms("wikipedia")
                 .searchResultPageUrl();
 

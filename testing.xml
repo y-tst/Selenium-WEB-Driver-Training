@@ -7,7 +7,7 @@
     <test name="ChromeTest">
         <parameter name="browser" value="Chrome"/>
         <classes>
-            <class name="test.googleSearchResultsTest.GoogleSearchNotEmptyTest">
+            <class name="tests.googleSearchResultsTest.GoogleSearchNotEmptyTest">
             </class>
         </classes>
     </test>
@@ -16,7 +16,7 @@
 
         <parameter name="browser" value="Firefox"/>
         <classes>
-            <class name="test.googleSearchResultsTest.GoogleSearchNotEmptyTest">
+            <class name="tests.googleSearchResultsTest.GoogleSearchNotEmptyTest">
             </class>
         </classes>
     </test>
@@ -24,7 +24,7 @@
     <test name="EdgeTest">
         <parameter name="browser" value="Edge"/>
         <classes>
-            <class name="test.googleSearchResultsTest.GoogleSearchNotEmptyTest">
+            <class name="tests.googleSearchResultsTest.GoogleSearchNotEmptyTest">
             </class>
         </classes>
     </test>
