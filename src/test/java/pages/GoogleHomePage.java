@@ -7,6 +7,8 @@ import org.openqa.selenium.support.PageFactory;
 
 public class GoogleHomePage extends BasePage {
 
+    public static final String GOOGLE_HOMEPAGE_URL = "https://www.google.com/";
+
     @FindBy(name = "q")
     private WebElement googleSearchField;
 
@@ -16,13 +18,19 @@ public class GoogleHomePage extends BasePage {
     public GoogleHomePage(WebDriver driver) {
         super(driver);
 
-        PageFactory.initElements(driver, this);
+    }
+
+    @Override
+    public GoogleHomePage pageOpener() {
+        driver.get(GOOGLE_HOMEPAGE_URL);
+        driver.manage().window().maximize();
+        waiter(driver);
+        return this;
     }
 
     public GoogleSearchForWikipediaResultsPage searchForTerms(String searchTerm) {
-        pageOpener(BasePage.GOOGLE_HOMEPAGE_URL);
         googleSearchField.sendKeys(searchTerm);
         googleSearchButton.submit();
-        return new GoogleSearchForWikipediaResultsPage(driver, searchTerm);
+        return new GoogleSearchForWikipediaResultsPage(driver);
     }
 }

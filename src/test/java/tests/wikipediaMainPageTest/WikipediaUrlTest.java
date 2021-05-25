@@ -11,6 +11,7 @@ public class WikipediaUrlTest extends BaseTest {
     public void googleSearchIsCorrectCheck() {
 
         String googleForWikipediaSearchPageUrl = new GoogleHomePage(driver)
+                .pageOpener()
                 .searchForTerms("wikipedia")
                 .searchResultPageUrl();
 

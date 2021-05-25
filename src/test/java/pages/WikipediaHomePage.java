@@ -19,8 +19,14 @@ public class WikipediaHomePage extends BasePage {
 
     public WikipediaHomePage(WebDriver driver) {
         super(driver);
+    }
 
-        PageFactory.initElements(driver, this);
+    @Override
+    public WikipediaHomePage pageOpener() {
+        driver.get(WIKIPEDIA_HOMEPAGE_URL);
+        driver.manage().window().maximize();
+        waiter(driver);
+        return this;
     }
 
     public WikipediaHomePage openWikipediaPage() {
@@ -28,10 +34,9 @@ public class WikipediaHomePage extends BasePage {
     }
 
     public WikipediaSearchForTestAutomationResultsPage WikiSearchForTerms(String searchWikiTerm) {
-        pageOpener(WIKIPEDIA_HOMEPAGE_URL);
         wikiSearchField.sendKeys(searchWikiTerm);
         wikiSearchField.submit();
-        return new WikipediaSearchForTestAutomationResultsPage(driver, searchWikiTerm);
+        return new WikipediaSearchForTestAutomationResultsPage(driver);
     }
 
     public int getImageHeightForStandardScreenShot() {

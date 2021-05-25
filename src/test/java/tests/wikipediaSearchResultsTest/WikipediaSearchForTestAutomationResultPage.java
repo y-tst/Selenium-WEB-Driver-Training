@@ -11,7 +11,7 @@ public class WikipediaSearchForTestAutomationResultPage extends BaseTest {
     public void searchForTestAutomationCheck() {
 
         String expectedTitleContentForTestAutomationSearch = new WikipediaHomePage(driver)
-                .openWikipediaPage()
+                .pageOpener()
                 .WikiSearchForTerms("Test Automation")
                 .wikipediaSearchPageTitle();
 

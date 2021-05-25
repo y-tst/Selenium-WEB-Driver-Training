@@ -11,7 +11,7 @@ public class WikipediaImageTest extends BaseTest {
     public void wikipediaImageIsValidCheck() {
 
         int imageCapturedByStandardScreenShot = new WikipediaHomePage(driver)
-                .openWikipediaPage()
+                .pageOpener()
                 .getImageHeightForStandardScreenShot();
 
         Assert.assertTrue(imageCapturedByStandardScreenShot > 0, "The image doesn't exist");

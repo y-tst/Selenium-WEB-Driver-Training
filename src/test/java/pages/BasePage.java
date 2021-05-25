@@ -1,27 +1,25 @@
 package pages;
 
 import org.openqa.selenium.*;
+import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public abstract class BasePage {
 
-    public static final String GOOGLE_HOMEPAGE_URL = "https://www.google.com/";
-    private static final int waitingPeriod = 20;
+    protected static final int WAITING_PERIOD = 20;
 
-    public BasePage(WebDriver driver) {
+    protected BasePage(WebDriver driver) {
+
+        PageFactory.initElements(driver, this);
         this.driver = driver;
     }
 
-    public WebDriver driver;
+    protected WebDriver driver;
 
-    public void pageOpener(String url) {
-        driver.get(url);
-        driver.manage().window().maximize();
-        waiter(driver);
-    }
+    protected abstract BasePage pageOpener();
 
-    public static void waiter(WebDriver driver) {
+    protected static void waiter(WebDriver driver) {
 
         ExpectedCondition<Boolean> pageLoadCondition = new ExpectedCondition<Boolean>() {
             public Boolean apply(WebDriver driver) {
@@ -29,12 +27,7 @@ public abstract class BasePage {
             }
         };
 
-        WebDriverWait wait = new WebDriverWait(driver, waitingPeriod);
+        WebDriverWait wait = new WebDriverWait(driver, WAITING_PERIOD);
         wait.until(pageLoadCondition);
-    }
-
-    public BasePage openGooglePage() {
-        pageOpener(GOOGLE_HOMEPAGE_URL);
-        return new GoogleHomePage(driver);
     }
 }

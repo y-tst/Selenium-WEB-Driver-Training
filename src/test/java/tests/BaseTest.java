@@ -11,13 +11,13 @@ import java.util.logging.Logger;
 
 public abstract class BaseTest {
 
-    public Logger logger = Logger.getGlobal();
+    protected Logger logger = Logger.getGlobal();
 
-    public WebDriver driver;
+    protected WebDriver driver;
 
     @BeforeTest
     @Parameters("browser")
-    public void setup(String browser) throws Exception {
+    public void setup(@Optional("Chrome") String browser) throws Exception {
         if (browser.equalsIgnoreCase("Firefox")) {
             System.setProperty("webdriver.gecko.driver", "src/test/resources/geckodriver.exe");
             driver = new FirefoxDriver();
@@ -35,7 +35,7 @@ public abstract class BaseTest {
 
     @AfterTest
     public void tearDown() {
-        driver = null;
         driver.quit();
+        driver = null;
     }
 }

@@ -10,6 +10,7 @@ public class GoogleSearchNotEmptyTest extends BaseTest {
     @Test
     public void searchResultNotEmptyCheck() {
         int expectedGoogleSearchResultForWikipediaNumber = new GoogleHomePage(driver)
+                .pageOpener()
                 .searchForTerms("wikipedia")
                 .countGeneralNumberOfSearchResults();
 

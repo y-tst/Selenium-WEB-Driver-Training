@@ -11,6 +11,7 @@ public class GoogleSearchResultLengthTest extends BaseTest {
     public void googleSearchIsCorrectCheck() {
 
         int searchResultPageLength = new GoogleHomePage(driver)
+                .pageOpener()
                 .searchForTerms("wikipedia")
                 .searchResultLength();
 
