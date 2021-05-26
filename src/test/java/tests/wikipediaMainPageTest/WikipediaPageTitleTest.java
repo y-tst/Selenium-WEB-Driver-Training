@@ -16,7 +16,7 @@ public class WikipediaPageTitleTest extends BaseTest {
                 .searchForTerms("wikipedia")
                 .wikipediaPageTitle();
 
-        Assert.assertEquals(expectedGoogleForWikipediaSearchPagetitle, "wikipedia - Пошук Google", "Different from the main Wiki page is opened");
+        Assert.assertTrue(expectedGoogleForWikipediaSearchPagetitle.contains("Google"), "Different from the main Wiki page is opened");
 
         logger.info(String.format("Wiki page title is '%s', it has length: %s symbols", expectedGoogleForWikipediaSearchPagetitle, expectedGoogleForWikipediaSearchPagetitle.length()));
     }
