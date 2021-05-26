@@ -1,8 +1,9 @@
-package pages;
+package pages.gismeteoPages;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import pages.BasePage;
 
 public class GismeteoHomePage extends BasePage {
 
@@ -20,6 +21,10 @@ public class GismeteoHomePage extends BasePage {
     @FindBy(xpath = "//div[@class='founditem__title']")
     private WebElement firstSugestionForSearch;
 
+    public GismeteoHomePage(WebDriver driver) {
+        super(driver);
+    }
+
     public String gismeteoMainUApageURL() {
         return driver.getCurrentUrl();
     }
@@ -30,10 +35,6 @@ public class GismeteoHomePage extends BasePage {
         driver.manage().window().maximize();
         waiter(driver);
         return this;
-    }
-
-    public GismeteoHomePage(WebDriver driver) {
-        super(driver);
     }
 
     public String switchToLocaleUA() {

@@ -1,9 +1,9 @@
-package tests.wikipediaMainPageTest;
+package tests.googleSearchResultsTests;
 
 import tests.BaseTest;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pages.GoogleHomePage;
+import pages.googlePages.GoogleHomePage;
 
 public class WikipediaUrlTest extends BaseTest {
 
@@ -15,8 +15,8 @@ public class WikipediaUrlTest extends BaseTest {
                 .searchForTerms("wikipedia")
                 .searchResultPageUrl();
 
-        Assert.assertTrue(googleForWikipediaSearchPageUrl.contains("wikipedia"), "Incorrect URL for Wiki page");
-
         logger.info(String.format("Google search for 'wikipedia' result page URL is %s ", googleForWikipediaSearchPageUrl));
+
+        Assert.assertTrue(googleForWikipediaSearchPageUrl.contains("wikipedia"), "Incorrect URL for Wiki page");
     }
 }

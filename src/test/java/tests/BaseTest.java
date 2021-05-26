@@ -15,7 +15,7 @@ public abstract class BaseTest {
 
     protected WebDriver driver;
 
-    @BeforeTest
+    @BeforeTest(alwaysRun = true)
     @Parameters("browser")
     public void setup(@Optional("Chrome") String browser) throws Exception {
         if (browser.equalsIgnoreCase("Firefox")) {
@@ -30,10 +30,9 @@ public abstract class BaseTest {
         } else {
             throw new Exception("Browser is not correct");
         }
-        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
     }
 
-    @AfterTest
+    @AfterTest(alwaysRun=true)
     public void tearDown() {
         driver.quit();
         driver = null;

@@ -1,9 +1,9 @@
-package pages;
+package pages.googlePages;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
+import pages.BasePage;
 
 public class GoogleHomePage extends BasePage {
 
@@ -17,7 +17,6 @@ public class GoogleHomePage extends BasePage {
 
     public GoogleHomePage(WebDriver driver) {
         super(driver);
-
     }
 
     @Override

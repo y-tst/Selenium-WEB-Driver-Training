@@ -7,15 +7,14 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public abstract class BasePage {
 
-    protected static final int WAITING_PERIOD = 20;
-
-    protected BasePage(WebDriver driver) {
-
-        PageFactory.initElements(driver, this);
-        this.driver = driver;
-    }
+    protected static final int TIMEOUT_IN_SECONDS = 20;
 
     protected WebDriver driver;
+
+    protected BasePage(WebDriver driver) {
+        this.driver = driver;
+        PageFactory.initElements(driver, this);
+    }
 
     protected abstract BasePage pageOpener();
 
@@ -27,7 +26,7 @@ public abstract class BasePage {
             }
         };
 
-        WebDriverWait wait = new WebDriverWait(driver, WAITING_PERIOD);
+        WebDriverWait wait = new WebDriverWait(driver, TIMEOUT_IN_SECONDS);
         wait.until(pageLoadCondition);
     }
 }

@@ -1,8 +1,8 @@
-package tests.GismeteoTests;
+package tests.gismeteoTests;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pages.GismeteoHomePage;
+import pages.gismeteoPages.GismeteoHomePage;
 import tests.BaseTest;
 
 public class GismeteoPageURLforUALocaleTest extends BaseTest {
@@ -14,9 +14,8 @@ public class GismeteoPageURLforUALocaleTest extends BaseTest {
                 .pageOpener()
                 .switchToLocaleUA();
 
-        Assert.assertEquals(localeUAPage, "https://www.gismeteo.ua/ua/", "Incorrect URL for UA locale Gismeteo main page");
-
         logger.info(String.format("URL for UA locale Gismeteo main page is %s ", localeUAPage));
 
+        Assert.assertEquals(localeUAPage, "https://www.gismeteo.ua/ua/", "Incorrect URL for UA locale Gismeteo main page");
     }
 }

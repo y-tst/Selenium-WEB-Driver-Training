@@ -1,11 +1,11 @@
-package tests.GismeteoTests;
+package tests.gismeteoTests;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pages.GismeteoHomePage;
+import pages.gismeteoPages.GismeteoHomePage;
 import tests.BaseTest;
 
-public class GismeteoKyivHumidity extends BaseTest {
+public class GismeteoKyivHumidityTest extends BaseTest {
 
     @Test
     public void gismeteoKyivWeatherHumidityPresenceCheck() {
@@ -15,8 +15,8 @@ public class GismeteoKyivHumidity extends BaseTest {
                 .searchForGismeteoTerm("Киев")
                 .humidityNameOnKyivWeatherPage();
 
-        Assert.assertEquals(humidityOnKyivWeatherPage, "Влажность", "Humidity parameter is absent on Kiyv Weather Page");
+        logger.info(String.format("Check of presence the Humidity parameter on Kiyv Weather Page"));
 
-        logger.info(String.format("Humidity parameter is present on Kiyv Weather Page"));
+        Assert.assertEquals(humidityOnKyivWeatherPage, "Влажность", "Humidity parameter is absent on Kiyv Weather Page");
     }
 }

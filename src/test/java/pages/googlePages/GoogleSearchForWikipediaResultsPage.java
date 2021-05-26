@@ -1,14 +1,15 @@
-package pages;
+package pages.googlePages;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import pages.BasePage;
 
 import java.util.List;
 
 public class GoogleSearchForWikipediaResultsPage extends BasePage {
 
-    @FindBy(xpath = "//div[contains(@class, 'g')]")
+    @FindBy(xpath = "(//div[contains(@class, 'g')])[1]")
     private List<WebElement> generalGoogleForWikipediaSearchResult;
 
     @FindBy(xpath = "//*[@id='rso']//a/h3")
@@ -32,11 +33,6 @@ public class GoogleSearchForWikipediaResultsPage extends BasePage {
 
     public int searchResultLength() {
         return driver.getTitle().length();
-    }
-
-    public GoogleSearchForWikipediaResultsPage openWikipediaPage() {
-        firstWikiLinkFromGoogleSearch.click();
-        return this;
     }
 
     @Override

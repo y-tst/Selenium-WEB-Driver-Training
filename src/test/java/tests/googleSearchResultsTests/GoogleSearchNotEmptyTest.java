@@ -1,9 +1,9 @@
-package tests.googleSearchResultsTest;
+package tests.googleSearchResultsTests;
 
 import tests.BaseTest;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pages.GoogleHomePage;
+import pages.googlePages.GoogleHomePage;
 
 public class GoogleSearchNotEmptyTest extends BaseTest {
 

@@ -1,10 +1,9 @@
-package tests.wikipediaMainPageTest;
+package tests.googleSearchResultsTests;
 
-import pages.WikipediaHomePage;
 import tests.BaseTest;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pages.GoogleHomePage;
+import pages.googlePages.GoogleHomePage;
 
 public class WikipediaPageTitleTest extends BaseTest {
 
@@ -16,8 +15,8 @@ public class WikipediaPageTitleTest extends BaseTest {
                 .searchForTerms("wikipedia")
                 .wikipediaPageTitle();
 
-        Assert.assertTrue(expectedGoogleForWikipediaSearchPagetitle.contains("Google"), "Different from the main Wiki page is opened");
-
         logger.info(String.format("Wiki page title is '%s', it has length: %s symbols", expectedGoogleForWikipediaSearchPagetitle, expectedGoogleForWikipediaSearchPagetitle.length()));
+
+        Assert.assertTrue(expectedGoogleForWikipediaSearchPagetitle.contains("Google"), "Different from the main Wiki page is opened");
     }
 }

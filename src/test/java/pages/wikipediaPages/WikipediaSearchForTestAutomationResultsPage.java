@@ -1,12 +1,12 @@
-package pages;
+package pages.wikipediaPages;
 
 import org.openqa.selenium.WebDriver;
+import pages.BasePage;
 
 public class WikipediaSearchForTestAutomationResultsPage extends BasePage {
 
     public WikipediaSearchForTestAutomationResultsPage(WebDriver driver) {
         super(driver);
-        return;
     }
 
     public String wikipediaSearchPageTitle() {
@@ -18,4 +18,3 @@ public class WikipediaSearchForTestAutomationResultsPage extends BasePage {
         return this;
     }
 }
-
