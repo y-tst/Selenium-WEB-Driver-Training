@@ -6,7 +6,6 @@ import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.*;
 
-import java.util.concurrent.TimeUnit;
 import java.util.logging.Logger;
 
 public abstract class BaseTest {

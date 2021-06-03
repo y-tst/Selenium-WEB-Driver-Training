@@ -33,20 +33,23 @@ public class GismeteoHomePage extends BasePage {
     public GismeteoHomePage pageOpener() {
         driver.get(GISMETEO_HOMEPAGE_URL);
         driver.manage().window().maximize();
-        waiter(driver);
+        waitForPageLoad();
+
         return this;
     }
 
     public String switchToLocaleUA() {
         languageSelectorDropDown.click();
         ukranianLanguage.click();
+
         return driver.getCurrentUrl();
     }
 
     public GismeteoKyivWeatherPage searchForGismeteoTerm(String gismeteoSearchTerm) {
         gismeteoSearchField.sendKeys(gismeteoSearchTerm);
         firstSugestionForSearch.click();
-        waiter(driver);
+        waitForPageLoad();
+
         return new GismeteoKyivWeatherPage(driver);
     }
 }

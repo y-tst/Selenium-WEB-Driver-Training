@@ -34,11 +34,11 @@ public class WikipediaHomePage extends BasePage {
     public WikipediaHomePage pageOpener() {
         driver.get(WIKIPEDIA_HOMEPAGE_URL);
         driver.manage().window().maximize();
-        waiter(driver);
+        waitForPageLoad();
         return this;
     }
 
-    public  int pictureHeightStandardScreenshot() throws IOException {
+    public int pictureHeightStandardScreenshot() throws IOException {
         WebElement didYouKnowPicture = imageForStandardScreenshot;
         File screen = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
         Point point = didYouKnowPicture.getLocation();
@@ -50,19 +50,22 @@ public class WikipediaHomePage extends BasePage {
         BufferedImage destination = img.getSubimage(xcordinate, ycordinate, imageWidth, imageHeight);
         ImageIO.write(destination, "png", screen);
         FileUtils.copyFile(screen, new File("target/pictures/DidYouKnowPic1.png"));
+
         return  imageHeight;
     };
 
-    public  int pictureWidthAShot() throws IOException {
+    public int pictureWidthAShot() throws IOException {
         WebElement element = imageForAShot;
         Screenshot secondPictureInDidYuuKnow = new AShot().shootingStrategy(ShootingStrategies.viewportPasting(1000)).takeScreenshot(driver, element);
         ImageIO.write(secondPictureInDidYuuKnow.getImage(), "jpg", new File("target/pictures/DidYouKnowPic2.jpg"));
-    return imageForAShot.getSize().getWidth();
+
+        return imageForAShot.getSize().getWidth();
     };
 
     public WikipediaSearchForTestAutomationResultsPage WikiSearchForTerms(String searchWikiTerm) {
         wikiSearchField.sendKeys(searchWikiTerm);
         wikiSearchField.submit();
+
         return new WikipediaSearchForTestAutomationResultsPage(driver);
     }
 }
