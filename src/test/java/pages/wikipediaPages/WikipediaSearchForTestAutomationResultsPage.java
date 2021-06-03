@@ -15,7 +15,6 @@ public class WikipediaSearchForTestAutomationResultsPage extends BasePage {
 
     @Override
     protected WikipediaSearchForTestAutomationResultsPage pageOpener() {
-
         return this;
     }
 }
