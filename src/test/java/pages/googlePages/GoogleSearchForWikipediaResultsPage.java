@@ -37,6 +37,7 @@ public class GoogleSearchForWikipediaResultsPage extends BasePage {
 
     @Override
     public GoogleSearchForWikipediaResultsPage pageOpener() {
+
         return this;
     }
 }

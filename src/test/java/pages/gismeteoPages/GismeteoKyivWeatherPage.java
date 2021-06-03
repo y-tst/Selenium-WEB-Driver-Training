@@ -25,6 +25,7 @@ public class GismeteoKyivWeatherPage extends BasePage {
 
     @Override
     protected GismeteoKyivWeatherPage pageOpener() {
+
         return this;
     }
 }

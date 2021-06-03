@@ -9,6 +9,7 @@ public class GismeteoHomePage extends BasePage {
 
     public static final String GISMETEO_HOMEPAGE_URL = "https://gismeteo.ua/";
 
+
     @FindBy(xpath = "//a[@class='dropdown__handle']")
     private WebElement languageSelectorDropDown;
 
@@ -33,20 +34,25 @@ public class GismeteoHomePage extends BasePage {
     public GismeteoHomePage pageOpener() {
         driver.get(GISMETEO_HOMEPAGE_URL);
         driver.manage().window().maximize();
-        waiter(driver);
+        waitForPageLoad();
+
         return this;
     }
 
     public String switchToLocaleUA() {
         languageSelectorDropDown.click();
         ukranianLanguage.click();
+
         return driver.getCurrentUrl();
     }
 
     public GismeteoKyivWeatherPage searchForGismeteoTerm(String gismeteoSearchTerm) {
+
         gismeteoSearchField.sendKeys(gismeteoSearchTerm);
+        waitForElementVisibility(firstSugestionForSearch);
         firstSugestionForSearch.click();
-        waiter(driver);
+        waitForPageLoad();
+
         return new GismeteoKyivWeatherPage(driver);
     }
 }
