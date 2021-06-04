@@ -12,7 +12,7 @@ public class DraggableSimulationPage extends BasePage {
     @FindBy(xpath = "//iframe[@class='demo-frame']")
     private WebElement defaultDraggableFrame;
 
-    @FindBy(xpath = "//div[@id=\'draggable\']")
+    @FindBy(xpath = "//div[@id='draggable']")
     private WebElement defaultDraggableElement;
 
     public DraggableSimulationPage(WebDriver driver) {
