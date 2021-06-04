@@ -29,10 +29,12 @@ public abstract class BaseTest {
         } else {
             throw new Exception("Browser is not correct");
         }
-    }
+        driver.manage().window().maximize();
+    };
 
     @AfterTest(alwaysRun=true)
     public void tearDown() {
+        driver.switchTo().defaultContent();
         driver.quit();
         driver = null;
     }

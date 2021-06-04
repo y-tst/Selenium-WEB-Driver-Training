@@ -33,7 +33,6 @@ public class WikipediaHomePage extends BasePage {
     @Override
     public WikipediaHomePage pageOpener() {
         driver.get(WIKIPEDIA_HOMEPAGE_URL);
-        driver.manage().window().maximize();
         waitForPageLoad();
         return this;
     }

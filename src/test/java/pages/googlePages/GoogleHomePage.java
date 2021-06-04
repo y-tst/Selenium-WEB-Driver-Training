@@ -22,7 +22,6 @@ public class GoogleHomePage extends BasePage {
     @Override
     public GoogleHomePage pageOpener() {
         driver.get(GOOGLE_HOMEPAGE_URL);
-        driver.manage().window().maximize();
         waitForPageLoad();
 
         return this;
