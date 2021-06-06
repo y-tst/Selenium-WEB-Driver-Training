@@ -1,5 +1,6 @@
 package pages.jQueryUIPages;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -25,7 +26,14 @@ public class DraggableSimulationPage extends BasePage {
     }
 
     public String shiftAlongXAndYAxis(int shiftAlongX, int shiftAlongY) {
+
+        JavascriptExecutor jsHighlighterForFrame = (JavascriptExecutor) driver;
+        jsHighlighterForFrame.executeScript("arguments[0].style.border='3px solid red'", defaultDraggableFrame);
+
         driver.switchTo().frame(defaultDraggableFrame);
+
+        JavascriptExecutor jsHighlighterForImem = (JavascriptExecutor) driver;
+        jsHighlighterForImem.executeScript("arguments[0].style.background='yellow'", defaultDraggableElement);
 
         new Actions(driver).dragAndDropBy(defaultDraggableElement, shiftAlongX, shiftAlongY).build().perform();
 
