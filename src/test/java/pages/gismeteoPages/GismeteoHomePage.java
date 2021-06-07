@@ -43,7 +43,6 @@ public class GismeteoHomePage extends BasePage {
     public GismeteoKyivWeatherPage searchForGismeteoTerm(String gismeteoSearchTerm) {
         waitForElementVisibility(gismeteoSearchField);
         gismeteoSearchField.sendKeys(gismeteoSearchTerm);
-        waitForElementVisibility(firstSuggestionForSearch);
         firstSuggestionForSearch.click();
         waitForPageLoad();
 
