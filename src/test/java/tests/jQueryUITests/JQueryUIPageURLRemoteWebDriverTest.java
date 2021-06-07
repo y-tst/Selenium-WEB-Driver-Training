@@ -12,7 +12,7 @@ import tests.BaseTest;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-public class JQueryUIPageURLRemoteWebDrivertest extends BaseTest {
+public class JQueryUIPageURLRemoteWebDriverTest extends BaseTest {
 
     @Test
     public void jQueryUIPageURLForDraggableElementCheck() throws MalformedURLException {
@@ -21,12 +21,7 @@ public class JQueryUIPageURLRemoteWebDrivertest extends BaseTest {
         desiredCapabilities.setPlatform(Platform.ANY);
         desiredCapabilities.setBrowserName("chrome");
 
-//        ChromeOptions options = new ChromeOptions();
-//        options.addExtensions(new File("/path/to/extension.crx"));
-//        options.setBinary(new File("/path/to/chrome"));
-
         WebDriver driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), desiredCapabilities);
-//        WebDriver driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), options);{
 
         String draggableSimulator = new JQueryUAHomePage(driver)
                 .pageOpener()

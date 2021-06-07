@@ -32,11 +32,11 @@ public class DraggableSimulationPage extends BasePage {
 
         driver.switchTo().frame(defaultDraggableFrame);
 
-        JavascriptExecutor jsHighlighterForImem = (JavascriptExecutor) driver;
-        jsHighlighterForImem.executeScript("arguments[0].style.background='yellow'", defaultDraggableElement);
+        JavascriptExecutor jsHighlighterForItem = (JavascriptExecutor) driver;
+        jsHighlighterForItem.executeScript("arguments[0].style.background='yellow'", defaultDraggableElement);
 
         new Actions(driver).dragAndDropBy(defaultDraggableElement, shiftAlongX, shiftAlongY).build().perform();
 
-        return new String(defaultDraggableElement.getAttribute("style"));
+        return defaultDraggableElement.getAttribute("style");
     }
 }

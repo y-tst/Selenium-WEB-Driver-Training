@@ -3,7 +3,6 @@ package tests.jQueryUITests;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.jQueryUIPages.SelectableSerializePage;
-import pages.jQueryUIPages.SortablePlaceholderPage;
 import tests.BaseTest;
 
 public class SelectableElementsTest extends BaseTest {

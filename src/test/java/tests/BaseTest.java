@@ -14,7 +14,7 @@ public abstract class BaseTest {
 
     protected WebDriver driver;
 
-    @BeforeTest(alwaysRun = true)
+    @BeforeMethod(alwaysRun = true)
     @Parameters("browser")
     public void setup(@Optional("Chrome") String browser) throws Exception {
         if (browser.equalsIgnoreCase("Firefox")) {
@@ -32,7 +32,7 @@ public abstract class BaseTest {
         driver.manage().window().maximize();
     };
 
-    @AfterTest(alwaysRun=true)
+    @AfterMethod(alwaysRun=true)
     public void tearDown() {
         driver.switchTo().defaultContent();
         driver.quit();
