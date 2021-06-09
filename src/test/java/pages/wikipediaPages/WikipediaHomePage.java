@@ -49,10 +49,10 @@ public class WikipediaHomePage extends BasePage {
     };
 
     public int pictureWidthAShot() throws IOException {
-        Screenshot secondPictureInDidYuuKnow = new AShot().shootingStrategy(ShootingStrategies.viewportPasting(1000)).takeScreenshot(driver);
-        ImageIO.write(secondPictureInDidYuuKnow.getImage(), "jpg", new File("target/pictures/DidYouKnowPic2.jpg"));
+        Screenshot secondPictureInDidYouKnow = new AShot().shootingStrategy(ShootingStrategies.viewportPasting(1000)).takeScreenshot(driver, imageForAShot);
+        ImageIO.write(secondPictureInDidYouKnow.getImage(), "jpg", new File("target/pictures/DidYouKnowPic2.jpg"));
 
-        return secondPictureInDidYuuKnow.getImage().getWidth();
+        return secondPictureInDidYouKnow.getImage().getWidth();
     };
 
     public WikipediaSearchForTestAutomationResultsPage WikiSearchForTerms(String searchWikiTerm) {
