@@ -6,11 +6,15 @@ import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.util.logging.Logger;
+
 public abstract class BasePage {
 
     protected static final int TIMEOUT_IN_SECONDS = 10;
 
     protected static WebDriver driver;
+
+    protected Logger logger = Logger.getGlobal();
 
     protected BasePage(WebDriver driver) {
         this.driver = driver;
@@ -35,5 +39,21 @@ public abstract class BasePage {
         new WebDriverWait(driver, TIMEOUT_IN_SECONDS).until(ExpectedConditions.visibilityOf(element));
 
         return element.isEnabled();
+    }
+
+    public boolean retryingFindClick(WebElement webElement) {
+        boolean result = false;
+        int attempts = 0;
+        while (attempts < 3) {
+            try {
+                webElement.click();
+                result = true;
+                break;
+            } catch (StaleElementReferenceException e) {
+            }
+            attempts++;
+        }
+
+        return result;
     }
 }

@@ -8,8 +8,8 @@ import pages.BasePage;
 
 public class GismeteoKyivWeatherPage extends BasePage {
 
-    @FindBy(xpath = "(//span[@property='name'])[2]")
-    private WebElement gismeteoKyivPageSubtitle;
+    @FindBy(xpath = "//h1")
+    private WebElement gismeteoKyivPageTitle;
 
     public GismeteoKyivWeatherPage(WebDriver driver) {
         super(driver);
@@ -19,9 +19,8 @@ public class GismeteoKyivWeatherPage extends BasePage {
         return driver.getTitle();
     }
 
-    public String gismeteoPageSubtitle() {
-        waitForElementVisibility(gismeteoKyivPageSubtitle);
-        return (String) ((JavascriptExecutor) driver).executeScript("return arguments[0].innerHTML;", gismeteoKyivPageSubtitle);
+    public String kyivWeatherPageAknowledge() {
+        return gismeteoKyivPageTitle.getText();
     }
 
     @Override

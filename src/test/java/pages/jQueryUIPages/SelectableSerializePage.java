@@ -8,12 +8,10 @@ import org.openqa.selenium.support.FindBy;
 import pages.BasePage;
 
 import java.util.List;
-import java.util.logging.Logger;
 
 public class SelectableSerializePage extends BasePage {
 
     public static final String SELECTABLE_SERIALIZE_URL = "https://jqueryui.com/selectable/#serialize";
-    protected Logger logger = Logger.getGlobal();
 
     @FindBy(xpath = "//iframe[@class='demo-frame']")
     private WebElement frameElement;
@@ -22,7 +20,7 @@ public class SelectableSerializePage extends BasePage {
     private WebElement selectableResumeElement;
 
     @FindAll({@FindBy(xpath = "//li[@class='ui-widget-content ui-selectee']")})
-    List<WebElement> selectableList;
+    private  List<WebElement> selectableList;
 
     public SelectableSerializePage(WebDriver driver) {
         super(driver);

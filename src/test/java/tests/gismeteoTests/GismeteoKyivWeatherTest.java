@@ -8,15 +8,15 @@ import tests.BaseTest;
 public class GismeteoKyivWeatherTest extends BaseTest {
 
     @Test
-    public void gismeteoKyivWeatherHumidityPresenceCheck() {
+    public void gismeteoKyivWeatherPageSubtitleCheck() {
 
-        String humidityOnKyivWeatherPage = new GismeteoHomePage(driver)
+        String kyivWeatherSubtitle = new GismeteoHomePage(driver)
                 .pageOpener()
                 .searchForGismeteoTerm("Киев")
-                .gismeteoPageSubtitle();
+                .kyivWeatherPageAknowledge();
 
-        logger.info(String.format("Checking the subtitle for Kiyv Weather Page"));
+        logger.info(String.format("Checking the subtitle for Kyiv Weather Page"));
 
-        Assert.assertEquals(humidityOnKyivWeatherPage, "Киев", "Current page is not for Kiyv Weather");
+        Assert.assertEquals(kyivWeatherSubtitle, "Погода в Киеве", "Current page is not for Kyiv Weather");
     }
 }

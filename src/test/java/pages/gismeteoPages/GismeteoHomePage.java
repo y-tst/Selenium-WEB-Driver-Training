@@ -18,7 +18,7 @@ public class GismeteoHomePage extends BasePage {
     @FindBy(name = "q")
     private WebElement gismeteoSearchField;
 
-    @FindBy(xpath = "//span[@class='founditem__link']")
+    @FindBy(xpath = "//a[contains(@data-id,'4944')]")
     private WebElement firstSuggestionForSearch;
 
     public GismeteoHomePage(WebDriver driver) {
@@ -43,8 +43,7 @@ public class GismeteoHomePage extends BasePage {
     public GismeteoKyivWeatherPage searchForGismeteoTerm(String gismeteoSearchTerm) {
         waitForElementVisibility(gismeteoSearchField);
         gismeteoSearchField.sendKeys(gismeteoSearchTerm);
-        firstSuggestionForSearch.click();
-        waitForPageLoad();
+        retryingFindClick(firstSuggestionForSearch);
 
         return new GismeteoKyivWeatherPage(driver);
     }
