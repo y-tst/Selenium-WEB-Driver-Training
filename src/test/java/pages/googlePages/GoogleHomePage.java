@@ -22,14 +22,15 @@ public class GoogleHomePage extends BasePage {
     @Override
     public GoogleHomePage pageOpener() {
         driver.get(GOOGLE_HOMEPAGE_URL);
-        driver.manage().window().maximize();
-        waiter(driver);
+        waitForPageLoad();
+
         return this;
     }
 
     public GoogleSearchForWikipediaResultsPage searchForTerms(String searchTerm) {
         googleSearchField.sendKeys(searchTerm);
         googleSearchButton.submit();
+
         return new GoogleSearchForWikipediaResultsPage(driver);
     }
 }

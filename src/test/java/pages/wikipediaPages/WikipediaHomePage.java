@@ -33,36 +33,32 @@ public class WikipediaHomePage extends BasePage {
     @Override
     public WikipediaHomePage pageOpener() {
         driver.get(WIKIPEDIA_HOMEPAGE_URL);
-        driver.manage().window().maximize();
-        waiter(driver);
+        waitForPageLoad();
         return this;
     }
 
-    public  int pictureHeightStandardScreenshot() throws IOException {
-        WebElement didYouKnowPicture = imageForStandardScreenshot;
+    public int pictureHeightStandardScreenshot() throws IOException {
         File screen = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-        Point point = didYouKnowPicture.getLocation();
-        int xcordinate = point.getX();
-        int ycordinate = point.getY();
-        int imageWidth = didYouKnowPicture.getSize().getWidth();
-        int imageHeight = didYouKnowPicture.getSize().getHeight();
+        Point point = imageForStandardScreenshot.getLocation();
         BufferedImage img = ImageIO.read(screen);
-        BufferedImage destination = img.getSubimage(xcordinate, ycordinate, imageWidth, imageHeight);
+        BufferedImage destination = img.getSubimage(point.getX(), point.getY(), imageForStandardScreenshot.getSize().getWidth(), imageForStandardScreenshot.getSize().getHeight());
         ImageIO.write(destination, "png", screen);
         FileUtils.copyFile(screen, new File("target/pictures/DidYouKnowPic1.png"));
-        return  imageHeight;
+
+        return  imageForStandardScreenshot.getSize().getHeight();
     };
 
-    public  int pictureWidthAShot() throws IOException {
-        WebElement element = imageForAShot;
-        Screenshot secondPictureInDidYuuKnow = new AShot().shootingStrategy(ShootingStrategies.viewportPasting(1000)).takeScreenshot(driver, element);
-        ImageIO.write(secondPictureInDidYuuKnow.getImage(), "jpg", new File("target/pictures/DidYouKnowPic2.jpg"));
-    return imageForAShot.getSize().getWidth();
+    public int pictureWidthAShot() throws IOException {
+        Screenshot secondPictureInDidYouKnow = new AShot().shootingStrategy(ShootingStrategies.viewportPasting(1000)).takeScreenshot(driver, imageForAShot);
+        ImageIO.write(secondPictureInDidYouKnow.getImage(), "jpg", new File("target/pictures/DidYouKnowPic2.jpg"));
+
+        return secondPictureInDidYouKnow.getImage().getWidth();
     };
 
     public WikipediaSearchForTestAutomationResultsPage WikiSearchForTerms(String searchWikiTerm) {
         wikiSearchField.sendKeys(searchWikiTerm);
         wikiSearchField.submit();
+
         return new WikipediaSearchForTestAutomationResultsPage(driver);
     }
 }

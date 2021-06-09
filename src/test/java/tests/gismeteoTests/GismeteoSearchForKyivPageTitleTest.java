@@ -15,7 +15,7 @@ public class GismeteoSearchForKyivPageTitleTest extends BaseTest {
                 .searchForGismeteoTerm("Киев")
                 .searchResultPageTitle();
 
-        logger.info(String.format("Wiki page title is '%s', it has length: %s symbols", pageTytleForKyivWeather, pageTytleForKyivWeather.length()));
+        logger.info(String.format("Gismeteo Kyiv weather page title is '%s', it has length: %s symbols", pageTytleForKyivWeather, pageTytleForKyivWeather.length()));
 
         Assert.assertTrue(pageTytleForKyivWeather.contains("GISMETEO: Погода в Киеве сегодня"), "Wrong page title for Kyiv weather");
     }

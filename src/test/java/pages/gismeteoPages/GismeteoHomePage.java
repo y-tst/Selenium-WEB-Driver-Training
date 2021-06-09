@@ -13,40 +13,38 @@ public class GismeteoHomePage extends BasePage {
     private WebElement languageSelectorDropDown;
 
     @FindBy(xpath = "//a[@data-lang='ua']")
-    private WebElement ukranianLanguage;
+    private WebElement ukrainianLanguage;
 
     @FindBy(name = "q")
     private WebElement gismeteoSearchField;
 
-    @FindBy(xpath = "//div[@class='founditem__title']")
-    private WebElement firstSugestionForSearch;
+    @FindBy(xpath = "//a[contains(@data-id,'4944')]")
+    private WebElement firstSuggestionForSearch;
 
     public GismeteoHomePage(WebDriver driver) {
         super(driver);
     }
 
-    public String gismeteoMainUApageURL() {
-        return driver.getCurrentUrl();
-    }
-
     @Override
     public GismeteoHomePage pageOpener() {
         driver.get(GISMETEO_HOMEPAGE_URL);
-        driver.manage().window().maximize();
-        waiter(driver);
+        waitForPageLoad();
+
         return this;
     }
 
     public String switchToLocaleUA() {
         languageSelectorDropDown.click();
-        ukranianLanguage.click();
+        ukrainianLanguage.click();
+
         return driver.getCurrentUrl();
     }
 
     public GismeteoKyivWeatherPage searchForGismeteoTerm(String gismeteoSearchTerm) {
+        waitForElementVisibility(gismeteoSearchField);
         gismeteoSearchField.sendKeys(gismeteoSearchTerm);
-        firstSugestionForSearch.click();
-        waiter(driver);
+        retryingFindClick(firstSuggestionForSearch);
+
         return new GismeteoKyivWeatherPage(driver);
     }
 }

@@ -9,12 +9,12 @@ public class WikipediaSearchForTestAutomationResultsPage extends BasePage {
         super(driver);
     }
 
-    public String wikipediaSearchPageTitle() {
-        return driver.getTitle();
-    }
-
     @Override
     protected WikipediaSearchForTestAutomationResultsPage pageOpener() {
         return this;
+    }
+
+    public String wikipediaSearchPageTitle() {
+        return driver.getTitle();
     }
 }

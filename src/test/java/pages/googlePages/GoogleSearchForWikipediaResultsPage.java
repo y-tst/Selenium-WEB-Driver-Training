@@ -19,6 +19,11 @@ public class GoogleSearchForWikipediaResultsPage extends BasePage {
         super(driver);
     }
 
+    @Override
+    public GoogleSearchForWikipediaResultsPage pageOpener() {
+        return this;
+    }
+
     public int countGeneralNumberOfSearchResults() {
         return generalGoogleForWikipediaSearchResult.size();
     }
@@ -33,10 +38,5 @@ public class GoogleSearchForWikipediaResultsPage extends BasePage {
 
     public int searchResultLength() {
         return driver.getTitle().length();
-    }
-
-    @Override
-    public GoogleSearchForWikipediaResultsPage pageOpener() {
-        return this;
     }
 }
