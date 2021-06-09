@@ -1,6 +1,5 @@
 package pages.gismeteoPages;
 
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -8,8 +7,8 @@ import pages.BasePage;
 
 public class GismeteoKyivWeatherPage extends BasePage {
 
-    @FindBy(xpath = "//a[@data-subnav-id='humidity\']")
-    private WebElement gismeteoKyivHumidity;
+    @FindBy(xpath = "//h1")
+    private WebElement gismeteoKyivPageTitle;
 
     public GismeteoKyivWeatherPage(WebDriver driver) {
         super(driver);
@@ -19,8 +18,8 @@ public class GismeteoKyivWeatherPage extends BasePage {
         return driver.getTitle();
     }
 
-    public String humidityNameOnKyivWeatherPage() {
-        return (String) ((JavascriptExecutor) driver).executeScript("return arguments[0].innerHTML;", gismeteoKyivHumidity);
+    public String kyivWeatherPageAknowledge() {
+        return gismeteoKyivPageTitle.getText();
     }
 
     @Override

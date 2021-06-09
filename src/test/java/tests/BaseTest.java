@@ -6,7 +6,6 @@ import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.*;
 
-import java.util.concurrent.TimeUnit;
 import java.util.logging.Logger;
 
 public abstract class BaseTest {
@@ -15,7 +14,7 @@ public abstract class BaseTest {
 
     protected WebDriver driver;
 
-    @BeforeTest(alwaysRun = true)
+    @BeforeMethod(alwaysRun = true)
     @Parameters("browser")
     public void setup(@Optional("Chrome") String browser) throws Exception {
         if (browser.equalsIgnoreCase("Firefox")) {
@@ -30,10 +29,12 @@ public abstract class BaseTest {
         } else {
             throw new Exception("Browser is not correct");
         }
-    }
+        driver.manage().window().maximize();
+    };
 
-    @AfterTest(alwaysRun=true)
+    @AfterMethod(alwaysRun=true)
     public void tearDown() {
+        driver.switchTo().defaultContent();
         driver.quit();
         driver = null;
     }
