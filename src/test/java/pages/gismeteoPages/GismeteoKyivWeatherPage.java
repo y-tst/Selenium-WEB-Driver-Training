@@ -18,7 +18,7 @@ public class GismeteoKyivWeatherPage extends BasePage {
         return driver.getTitle();
     }
 
-    public String kyivWeatherPageAknowledge() {
+    public String kyivWeatherPageAcknowledge() {
         return gismeteoKyivPageTitle.getText();
     }
 

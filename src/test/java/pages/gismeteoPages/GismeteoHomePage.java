@@ -7,7 +7,7 @@ import pages.BasePage;
 
 public class GismeteoHomePage extends BasePage {
 
-    public static final String GISMETEO_HOMEPAGE_URL = "https://gismeteo.ua/";
+    private static final String GISMETEO_HOMEPAGE_URL = "https://gismeteo.ua/";
 
     @FindBy(xpath = "//a[@class='dropdown__handle']")
     private WebElement languageSelectorDropDown;
@@ -28,6 +28,7 @@ public class GismeteoHomePage extends BasePage {
     @Override
     public GismeteoHomePage pageOpener() {
         driver.get(GISMETEO_HOMEPAGE_URL);
+
         waitForPageLoad();
 
         return this;

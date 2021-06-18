@@ -1,6 +1,6 @@
 package pages.overDrivePages;
 
-import Model.User;
+import model.User;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -8,7 +8,7 @@ import pages.BasePage;
 
 public class OverDriveSignInPage extends BasePage {
 
-    public static final String OVERDRIVE_SIGN_IN_PAGE_URL = "https://www.overdrive.com/account/sign-in?returnUrl=%2Faccount%2Fsign-in";
+    private static final String OVERDRIVE_SIGN_IN_PAGE_URL = "https://www.overdrive.com/account/sign-in?returnUrl=%2Faccount%2Fsign-in";
 
     @FindBy(xpath = "//input[@id='UserName']")
     private WebElement userNameInputField;
@@ -37,7 +37,7 @@ public class OverDriveSignInPage extends BasePage {
         userPasswordInputField.sendKeys(user.getPassword());
         submitCredentialsButton.submit();
 
-        logger.info(String.format("Login to OverDrive library is performed"));
+        logger.info("Login to OverDrive library is performed");
 
         return new OverDriveHomePage(driver);
     }

@@ -11,7 +11,7 @@ import java.util.List;
 
 public class SortablePlaceholderPage extends BasePage {
 
-    public static final String SORTABLE_PLACEHOLDER_URL = "https://jqueryui.com/sortable/#placeholder";
+    private static final String SORTABLE_PLACEHOLDER_URL = "https://jqueryui.com/sortable/#placeholder";
 
     @FindBy(xpath = "//iframe[@class='demo-frame']")
     private WebElement frameElement;

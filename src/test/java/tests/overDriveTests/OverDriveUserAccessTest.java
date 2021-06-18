@@ -1,6 +1,6 @@
 package tests.overDriveTests;
 
-import Model.User;
+import model.User;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.overDrivePages.OverDriveSignInPage;
@@ -11,6 +11,7 @@ public class OverDriveUserAccessTest extends BaseTest {
 	@Test
 	public void signInWithCredentialsCheck()
 	{
+
 		User testUser = UserCreator.withCredentialsFromProperty();
 
 		String loggedInUserName = new OverDriveSignInPage(driver)

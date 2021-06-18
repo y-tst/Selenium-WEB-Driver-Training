@@ -7,7 +7,7 @@ import pages.BasePage;
 
 public class OverDriveHomePage extends BasePage {
 
-    public static final String OVERDRIVE_HOMEPAGE_URL = "https://www.overdrive.com/";
+    private static final String OVERDRIVE_HOMEPAGE_URL = "https://www.overdrive.com/";
 
     @FindBy(xpath = "//li[@id='account-trigger']")
     private WebElement userIcon;
@@ -26,6 +26,7 @@ public class OverDriveHomePage extends BasePage {
 
     public String userNameOnOverDrivePage() {
         waitForElementVisibility(userIcon);
+
         return userIcon.getText();
     }
 }
