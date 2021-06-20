@@ -6,12 +6,11 @@ import pages.gismeteoPages.GismeteoHomePage;
 import tests.BaseTest;
 
 import java.io.UnsupportedEncodingException;
-import java.nio.charset.StandardCharsets;
 
 public class GismeteoKyivWeatherTest extends BaseTest {
 
     @Test
-    public void gismeteoKyivWeatherPageSubtitleCheck() throws UnsupportedEncodingException {
+    public void gismeteoKyivWeatherPageSubtitleCheck() throws UnsupportedEncodingException, InterruptedException {
 
         String kyivWeatherSubtitle = new GismeteoHomePage(driver)
                 .pageOpener()

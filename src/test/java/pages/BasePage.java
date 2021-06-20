@@ -39,12 +39,17 @@ public abstract class BasePage {
     }
 
     protected static boolean waitForElementVisibility(WebElement element) {
-        new WebDriverWait(driver, TIMEOUT_IN_SECONDS).until(ExpectedConditions.visibilityOf(element));
+        try {
+            new WebDriverWait(driver, TIMEOUT_IN_SECONDS).until(ExpectedConditions.visibilityOf(element));
+        }
+        catch (StaleElementReferenceException exception) {
+            exception.getStackTrace();
+        }
 
         return element.isEnabled();
     }
 
-    public boolean retryingFindClick(WebElement webElement) {
+    public boolean retryingFindClick(WebElement webElement) throws InterruptedException {
         boolean result = false;
         int attempts = 0;
         while (attempts < 3) {
@@ -55,6 +60,7 @@ public abstract class BasePage {
             } catch (StaleElementReferenceException e) {
             }
             attempts++;
+            Thread.sleep(250);
         }
 
         return result;

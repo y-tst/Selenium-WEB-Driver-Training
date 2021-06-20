@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="OverDrive Smoke Test Suite" verbose="8" parallel="tests" thread-count="1">
+<suite name="OverDrive Smoke Test Suite" verbose="8" parallel="methods" thread-count="2">
     <test name="Chrome QA env OverDrive Sign In Test">
         <parameter name="browser" value="Chrome"/>
         <parameter name="environment" value="qa"/>

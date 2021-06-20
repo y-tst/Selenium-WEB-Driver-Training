@@ -1,4 +1,4 @@
-package tests.jQueryUITests;
+package tests.jQueryUIremoteDriverTests;
 
 import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;

@@ -8,7 +8,7 @@
             <package name="tests.jQueryUITests"/>
             <package name="tests.overDriveTests"/>
             <package name="tests.wikipediaMainPageTests"/>
-            <package name="tests.wikipediaSearchResultsTest"/>
+            <package name="tests.wikipediaSearchResultsTests"/>
         </packages>
     </test>
     <listeners>

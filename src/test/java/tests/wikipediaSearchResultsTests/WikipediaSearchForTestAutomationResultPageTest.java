@@ -1,4 +1,4 @@
-package tests.wikipediaSearchResultsTest;
+package tests.wikipediaSearchResultsTests;
 
 import tests.BaseTest;
 import org.testng.Assert;

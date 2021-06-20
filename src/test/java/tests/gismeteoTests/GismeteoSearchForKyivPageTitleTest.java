@@ -10,7 +10,7 @@ import java.io.UnsupportedEncodingException;
 public class GismeteoSearchForKyivPageTitleTest extends BaseTest {
 
     @Test
-    public void gismeteoPageTitleForKyivCheck() throws UnsupportedEncodingException {
+    public void gismeteoPageTitleForKyivCheck() throws UnsupportedEncodingException, InterruptedException {
 
         String pageTytleForKyivWeather = new GismeteoHomePage(driver)
                 .pageOpener()
