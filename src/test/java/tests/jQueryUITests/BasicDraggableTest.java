@@ -7,8 +7,8 @@ import tests.BaseTest;
 
 public class BasicDraggableTest extends BaseTest {
 
-    private int xOffset = 50;
-    private int yOffset = 50;
+    private int xOffset = 45;
+    private int yOffset = 40;
 
     @Test
     public void basicDraggingCheck() {

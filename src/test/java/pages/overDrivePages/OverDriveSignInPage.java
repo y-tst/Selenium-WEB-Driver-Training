@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import pages.BasePage;
+import ru.yandex.qatools.allure.annotations.Step;
 
 public class OverDriveSignInPage extends BasePage {
 
@@ -23,6 +24,7 @@ public class OverDriveSignInPage extends BasePage {
         super(driver);
     }
 
+    @Step("Opening the sign in page")
     @Override
     public OverDriveSignInPage pageOpener() {
         driver.get(OVERDRIVE_SIGN_IN_PAGE_URL);
@@ -32,6 +34,7 @@ public class OverDriveSignInPage extends BasePage {
         return this;
     }
 
+    @Step("Sign in OverDive online library using correct credentials")
     public OverDriveHomePage loginUserUsingUserNameAndPassword(User user) {
         userNameInputField.sendKeys(user.getUsername());
         userPasswordInputField.sendKeys(user.getPassword());

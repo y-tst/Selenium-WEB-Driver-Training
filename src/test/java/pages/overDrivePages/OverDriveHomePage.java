@@ -4,6 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import pages.BasePage;
+import ru.yandex.qatools.allure.annotations.Step;
 
 public class OverDriveHomePage extends BasePage {
 
@@ -24,6 +25,7 @@ public class OverDriveHomePage extends BasePage {
         return this;
     }
 
+    @Step("Checking signed in user name")
     public String userNameOnOverDrivePage() {
         waitForElementVisibility(userIcon);
 
