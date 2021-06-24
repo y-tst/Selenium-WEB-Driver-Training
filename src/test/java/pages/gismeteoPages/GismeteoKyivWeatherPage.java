@@ -15,6 +15,8 @@ public class GismeteoKyivWeatherPage extends BasePage {
     }
 
     public String searchResultPageTitle() {
+        waitForPageLoad();
+
         return driver.getTitle();
     }
 

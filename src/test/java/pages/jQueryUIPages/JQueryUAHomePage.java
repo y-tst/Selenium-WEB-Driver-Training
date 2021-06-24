@@ -32,7 +32,6 @@ public class JQueryUAHomePage extends BasePage {
         waitForElementVisibility(basicFunctionalityCase);
         basicFunctionalityCase.click();
         waitForElementVisibility(draggableSubItem);
-
         waitForPageLoad();
 
         return new DraggableSimulationPage(driver);

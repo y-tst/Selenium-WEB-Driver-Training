@@ -34,6 +34,7 @@ public class WikipediaHomePage extends BasePage {
     public WikipediaHomePage pageOpener() {
         driver.get(WIKIPEDIA_HOMEPAGE_URL);
         waitForPageLoad();
+        
         return this;
     }
 

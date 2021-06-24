@@ -28,7 +28,6 @@ public class GismeteoHomePage extends BasePage {
     @Override
     public GismeteoHomePage pageOpener() {
         driver.get(GISMETEO_HOMEPAGE_URL);
-
         waitForPageLoad();
 
         return this;
