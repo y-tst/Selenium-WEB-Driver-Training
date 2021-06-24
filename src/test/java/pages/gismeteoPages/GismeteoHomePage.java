@@ -7,7 +7,7 @@ import pages.BasePage;
 
 public class GismeteoHomePage extends BasePage {
 
-    public static final String GISMETEO_HOMEPAGE_URL = "https://gismeteo.ua/";
+    private static final String GISMETEO_HOMEPAGE_URL = "https://gismeteo.ua/";
 
     @FindBy(xpath = "//a[@class='dropdown__handle']")
     private WebElement languageSelectorDropDown;
@@ -40,9 +40,10 @@ public class GismeteoHomePage extends BasePage {
         return driver.getCurrentUrl();
     }
 
-    public GismeteoKyivWeatherPage searchForGismeteoTerm(String gismeteoSearchTerm) {
+    public GismeteoKyivWeatherPage searchForGismeteoTerm(String gismeteoSearchTerm) throws InterruptedException {
         waitForElementVisibility(gismeteoSearchField);
         gismeteoSearchField.sendKeys(gismeteoSearchTerm);
+        waitForElementVisibility(firstSuggestionForSearch);
         retryingFindClick(firstSuggestionForSearch);
 
         return new GismeteoKyivWeatherPage(driver);

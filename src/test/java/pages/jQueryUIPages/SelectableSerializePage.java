@@ -11,7 +11,7 @@ import java.util.List;
 
 public class SelectableSerializePage extends BasePage {
 
-    public static final String SELECTABLE_SERIALIZE_URL = "https://jqueryui.com/selectable/#serialize";
+    private static final String SELECTABLE_SERIALIZE_URL = "https://jqueryui.com/selectable/#serialize";
 
     @FindBy(xpath = "//iframe[@class='demo-frame']")
     private WebElement frameElement;

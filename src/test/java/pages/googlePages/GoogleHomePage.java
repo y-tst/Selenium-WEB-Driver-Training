@@ -7,7 +7,7 @@ import pages.BasePage;
 
 public class GoogleHomePage extends BasePage {
 
-    public static final String GOOGLE_HOMEPAGE_URL = "https://www.google.com/";
+    private static final String GOOGLE_HOMEPAGE_URL = "https://www.google.com/";
 
     @FindBy(name = "q")
     private WebElement googleSearchField;
