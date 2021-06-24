@@ -8,7 +8,7 @@ import tests.BaseTest;
 public class JQueryUIPageURLTest extends BaseTest {
 
     @Test
-    public void jQueryUIPageURLForDraggableElementCheck() {
+    public void draggableElementPageURLCheck() {
 
         String draggableSimulator = new JQueryUAHomePage(driver)
                 .pageOpener()

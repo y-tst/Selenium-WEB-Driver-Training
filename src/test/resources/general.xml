@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Regression all scope for Chrome" verbose="8" parallel="tests" thread-count="1">
+    <test name="Tests">
+        <packages>
+            <package name="tests.gismeteoTests"/>
+            <package name="tests.googleSearchResultsTests"/>
+            <package name="tests.jQueryUITests"/>
+            <package name="tests.overDriveTests"/>
+            <package name="tests.wikipediaMainPageTests"/>
+            <package name="tests.wikipediaSearchResultsTests"/>
+        </packages>
+    </test>
+    <listeners>
+        <listener class-name="service.TestListener" />
+    </listeners>
+</suite>

@@ -7,7 +7,7 @@ import pages.BasePage;
 
 public class JQueryUAHomePage extends BasePage {
 
-    public static final String JQUERYUI_HOMEPAGE_URL = "https://jqueryui.com/";
+    private static final String JQUERYUI_HOMEPAGE_URL = "https://jqueryui.com/";
 
     @FindBy(xpath = "//a[@href='https://jqueryui.com/draggable/']")
     private WebElement draggableSubItem;
@@ -32,7 +32,6 @@ public class JQueryUAHomePage extends BasePage {
         waitForElementVisibility(basicFunctionalityCase);
         basicFunctionalityCase.click();
         waitForElementVisibility(draggableSubItem);
-
         waitForPageLoad();
 
         return new DraggableSimulationPage(driver);

@@ -34,10 +34,12 @@ public class WikipediaHomePage extends BasePage {
     public WikipediaHomePage pageOpener() {
         driver.get(WIKIPEDIA_HOMEPAGE_URL);
         waitForPageLoad();
+        
         return this;
     }
 
     public int pictureHeightStandardScreenshot() throws IOException {
+        waitForElementVisibility(imageForStandardScreenshot);
         File screen = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
         Point point = imageForStandardScreenshot.getLocation();
         BufferedImage img = ImageIO.read(screen);
@@ -49,8 +51,11 @@ public class WikipediaHomePage extends BasePage {
     };
 
     public int pictureWidthAShot() throws IOException {
+        File screen = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+        waitForElementVisibility(imageForAShot);
         Screenshot secondPictureInDidYouKnow = new AShot().shootingStrategy(ShootingStrategies.viewportPasting(1000)).takeScreenshot(driver, imageForAShot);
-        ImageIO.write(secondPictureInDidYouKnow.getImage(), "jpg", new File("target/pictures/DidYouKnowPic2.jpg"));
+        ImageIO.write(secondPictureInDidYouKnow.getImage(), "png", screen);
+        FileUtils.copyFile(screen, new File("target/pictures/DidYouKnowPic2.png"));
 
         return secondPictureInDidYouKnow.getImage().getWidth();
     };

@@ -1,30 +1,38 @@
 package tests;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.*;
+import service.TestListener;
 
 import java.util.logging.Logger;
+
+@Listeners({TestListener.class})
 
 public abstract class BaseTest {
 
     protected Logger logger = Logger.getGlobal();
 
-    protected WebDriver driver;
+    protected static WebDriver driver;
+
+    public static WebDriver getDriver(){
+        return driver;
+    }
 
     @BeforeMethod(alwaysRun = true)
-    @Parameters("browser")
+    @Parameters({"browser"})
     public void setup(@Optional("Chrome") String browser) throws Exception {
         if (browser.equalsIgnoreCase("Firefox")) {
-            System.setProperty("webdriver.gecko.driver", "src/test/resources/geckodriver.exe");
+            WebDriverManager.firefoxdriver().setup();
             driver = new FirefoxDriver();
         } else if (browser.equalsIgnoreCase("Chrome")) {
-            System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver.exe");
+            WebDriverManager.chromedriver().setup();
             driver = new ChromeDriver();
         } else if (browser.equalsIgnoreCase("Edge")) {
-            System.setProperty("webdriver.edge.driver", "src/test/resources/msedgedriver.exe");
+            WebDriverManager.edgedriver().setup();
             driver = new EdgeDriver();
         } else {
             throw new Exception("Browser is not correct");
