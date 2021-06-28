@@ -8,13 +8,11 @@ import org.openqa.selenium.TakesScreenshot;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
-import tests.BaseTest;
 
 import java.io.File;
 import java.io.IOException;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
-
 
 public class TestListener implements ITestListener {
     private Logger log = LogManager.getRootLogger();
@@ -42,8 +40,8 @@ public class TestListener implements ITestListener {
     }
 
     private void saveScreenshot() {
-        File screenCapture = ((TakesScreenshot) BaseTest
-                .getDriver())
+        File screenCapture = ((TakesScreenshot) DriverSingleton
+                .getDriverInstance())
                 .getScreenshotAs(OutputType.FILE);
         try {
             FileUtils.copyFile(screenCapture, new File(
