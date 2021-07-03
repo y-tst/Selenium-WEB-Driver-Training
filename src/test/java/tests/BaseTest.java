@@ -7,13 +7,9 @@ import org.testng.annotations.Listeners;
 import service.DriverSingleton;
 import service.TestListener;
 
-import java.util.logging.Logger;
-
 @Listeners({TestListener.class})
 
-public abstract class BaseTest {
-
-    protected Logger logger = Logger.getGlobal();
+public abstract class BaseTest extends TestListener {
 
     protected static WebDriver driver;
 
