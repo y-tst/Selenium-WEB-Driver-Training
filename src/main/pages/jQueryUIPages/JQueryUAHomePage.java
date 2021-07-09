@@ -1,5 +1,6 @@
 package pages.jQueryUIPages;
 
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -14,6 +15,9 @@ public class JQueryUAHomePage extends BasePage {
 
     @FindBy(xpath = "//a[@href='/resources/demos/draggable/default.html']")
     private WebElement basicFunctionalityCase;
+
+    @FindBy(xpath = "//input[@name='s']")
+    private  WebElement searchField;
 
     public JQueryUAHomePage(WebDriver driver) {
         super(driver);
@@ -41,5 +45,12 @@ public class JQueryUAHomePage extends BasePage {
         draggableSubItem.click();
 
         return driver.getCurrentUrl();
+    }
+
+    public SearchResultPage fillInSearchField(String searchTerm){
+        waitForElementVisibility(searchField);
+        searchField.sendKeys(searchTerm);
+        searchField.sendKeys(Keys.ENTER);;
+        return new SearchResultPage(driver);
     }
 }
