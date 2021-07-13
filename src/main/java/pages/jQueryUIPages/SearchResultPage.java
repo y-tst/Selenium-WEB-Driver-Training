@@ -7,7 +7,6 @@ import pages.BasePage;
 
 public class SearchResultPage extends BasePage {
 
-
     @FindBy(xpath = "//p[@class='desc']")
     private WebElement descriptionField;
 
