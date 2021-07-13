@@ -1,6 +1,5 @@
 package pages.jQueryUIPages;
 
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -18,6 +17,9 @@ public class JQueryUAHomePage extends BasePage {
 
     @FindBy(xpath = "//input[@name='s']")
     private  WebElement searchField;
+
+    @FindBy(xpath = "//span[@class='algolia-docsearch-suggestion--highlight']")
+    private WebElement firstSuggestion;
 
     public JQueryUAHomePage(WebDriver driver) {
         super(driver);
@@ -50,7 +52,8 @@ public class JQueryUAHomePage extends BasePage {
     public SearchResultPage fillInSearchField(String searchTerm){
         waitForElementVisibility(searchField);
         searchField.sendKeys(searchTerm);
-        searchField.sendKeys(Keys.ENTER);;
+        waitForElementVisibility(firstSuggestion);
+        firstSuggestion.click();
         return new SearchResultPage(driver);
     }
 }

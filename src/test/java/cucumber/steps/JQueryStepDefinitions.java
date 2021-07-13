@@ -11,11 +11,11 @@ import service.DriverSingleton;
 
 public class JQueryStepDefinitions {
     @Given("User opens JQuery site")
-    public  void  openJQueryHomePage() {
+    public void openJQueryHomePage() {
         new JQueryUAHomePage(DriverSingleton.getDriverInstance()).pageOpener();
     }
 
-    @When("User searches for {string}")
+    @When("User searches for {string} and selects first suggestion")
     public void userSearch(String searchTerm) {
         new JQueryUAHomePage(DriverSingleton.getDriverInstance()).fillInSearchField(searchTerm);
     }

@@ -4,7 +4,7 @@ Feature: JQuery main functions
     Given  User opens JQuery site
 
   Scenario Outline: Checking JQuery main functions
-    When User searches for '<function>'
+    When User searches for '<function>' and selects first suggestion
     And Opens code source
     Then  Page contains proper '<description>'
 
