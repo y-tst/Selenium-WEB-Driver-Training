@@ -5,10 +5,9 @@ import io.cucumber.testng.CucumberOptions;
 
 @CucumberOptions(
         strict = true,
-        glue = "steps",
+        glue = "cucumber/steps",
         features = "classpath:features",
         plugin = {
-                "com.github.kirlionik.cucumberallure.AllureReporter",
                 "pretty", "json:target/Cucumber.json",
                 "html:target/cucumber-html-report"
         }

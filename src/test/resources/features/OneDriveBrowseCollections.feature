@@ -5,4 +5,3 @@ Feature: As a user I want to have an ability to get historical books collection
     When User chooses Browse Collection item
     And User clicks HISTORY button on the opened collections page
     Then Page with History title is opened
-

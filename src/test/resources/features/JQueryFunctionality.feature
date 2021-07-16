@@ -1,7 +1,7 @@
 Feature: JQuery main functions
 
   Background:
-    Given  User opens JQuery site
+    Given User opens JQuery site
 
   Scenario Outline: Checking JQuery main functions
     When User searches for '<function>' and selects first suggestion
