@@ -24,21 +24,9 @@
             <version>3.141.59</version>
         </dependency>
         <dependency>
-            <groupId>org.seleniumhq.selenium</groupId>
-            <artifactId>selenium-api</artifactId>
-            <version>3.141.59</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
             <groupId>io.github.bonigarcia</groupId>
             <artifactId>webdrivermanager</artifactId>
             <version>4.3.0</version>
-        </dependency>
-        <dependency>
-            <groupId>org.testng</groupId>
-            <artifactId>testng</artifactId>
-            <version>7.0.0-beta1</version>
-            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>ru.yandex.qatools.ashot</groupId>
@@ -141,10 +129,12 @@
                     <useUnlimitedThreads>true</useUnlimitedThreads>
                     <systemPropertyVariables>
                         <allure.results.directory>target/allure-results</allure.results.directory>
+                        <allure.link.issue.pattern>https://github.com/kirlionik/allure-cucumber-plugin/issues/%s</allure.link.issue.pattern>
+                        <allure.link.tms.pattern>https://github.com/kirlionik/allure-cucumber-plugin/issues/%s</allure.link.tms.pattern>
                     </systemPropertyVariables>
-                    <suiteXmlFiles>
-                        <suiteXmlFile>src/test/resources/general.xml</suiteXmlFile>
-                    </suiteXmlFiles>
+<!--                    <suiteXmlFiles>-->
+<!--                        <suiteXmlFile>src/test/resources/general.xml</suiteXmlFile>-->
+<!--                    </suiteXmlFiles>-->
                     <testFailureIgnore>true</testFailureIgnore>
                     <argLine>
                         -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
