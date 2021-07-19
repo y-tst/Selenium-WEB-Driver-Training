@@ -24,6 +24,7 @@ public class SearchResultPage extends BasePage {
 
     public String functionDescription() {
         waitForElementVisibility(descriptionField);
+
         return descriptionField.getText();
     }
 

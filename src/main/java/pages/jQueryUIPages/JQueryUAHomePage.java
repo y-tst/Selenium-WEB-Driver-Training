@@ -54,6 +54,7 @@ public class JQueryUAHomePage extends BasePage {
         searchField.sendKeys(searchTerm);
         waitForElementVisibility(firstSuggestion);
         firstSuggestion.click();
+
         return new SearchResultPage(driver);
     }
 }

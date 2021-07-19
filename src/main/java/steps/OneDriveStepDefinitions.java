@@ -1,4 +1,4 @@
-package cucumber.steps;
+package steps;
 
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
@@ -16,18 +16,18 @@ public class OneDriveStepDefinitions {
         new OverDriveHomePage(DriverSingleton.getDriverInstance()).pageOpener();
     }
 
-    @When("^User chooses Browse Collection item$")
+    @When("User chooses Browse Collection item")
     public void chooseBrowseCollectionItem() {
         new OverDriveHomePage(DriverSingleton.getDriverInstance()).openBooksCollectionsPage();
     }
 
-    @And("^User clicks HISTORY button on the opened collections page$")
+    @And("User clicks HISTORY button on the opened collections page")
     public void clickGenreButton() {
         new OverDriveBooksCollectionsPage(DriverSingleton.getDriverInstance())
                 .openHistoryBooks();
     }
 
-    @Then("^Page with History title is opened$")
+    @Then("Page with History title is opened")
     public void openedPageTitle() {
         String genrePageTitle = new OverDriveHistoricalBooksPage(DriverSingleton.getDriverInstance()).historicalBooksPageTitle();
 

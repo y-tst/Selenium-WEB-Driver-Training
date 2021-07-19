@@ -5,10 +5,10 @@ import io.cucumber.testng.CucumberOptions;
 
 @CucumberOptions(
         strict = true,
-        glue = "cucumber/steps",
+        glue = "steps",
         features = "classpath:features",
-        plugin = {
-                "pretty", "json:target/Cucumber.json",
+        plugin = {"pretty",
+                "json:target/Cucumber.json",
                 "html:target/cucumber-html-report"
         }
 )

@@ -91,21 +91,6 @@
             <artifactId>cucumber-core</artifactId>
             <version>${cucumber.version}</version>
         </dependency>
-<!--        <dependency>-->
-<!--            <groupId>com.github.kirlionik</groupId>-->
-<!--            <artifactId>allure-cucumber-plugin</artifactId>-->
-<!--            <version>1.0.1</version>-->
-<!--        </dependency>-->
-        <dependency>
-            <groupId>ru.yandex.qatools.allure</groupId>
-            <artifactId>allure-java-aspects</artifactId>
-            <version>${allure.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>ru.yandex.qatools.allure</groupId>
-            <artifactId>allure-commons</artifactId>
-            <version>${allure.version}</version>
-        </dependency>
     </dependencies>
 
     <build>
@@ -130,12 +115,7 @@
                     <useUnlimitedThreads>true</useUnlimitedThreads>
                     <systemPropertyVariables>
                         <allure.results.directory>target/allure-results</allure.results.directory>
-                        <allure.link.issue.pattern>https://example.org/browse/{}</allure.link.issue.pattern>
-                        <allure.link.tms.pattern>https://example.org/browse/{}</allure.link.tms.pattern>
                     </systemPropertyVariables>
-<!--                    <suiteXmlFiles>-->
-<!--                        <suiteXmlFile>src/test/resources/general.xml</suiteXmlFile>-->
-<!--                    </suiteXmlFiles>-->
                     <testFailureIgnore>true</testFailureIgnore>
                     <argLine>
                         -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
