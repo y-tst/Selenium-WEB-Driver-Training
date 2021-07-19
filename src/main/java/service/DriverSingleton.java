@@ -27,14 +27,9 @@ public class DriverSingleton {
                     driver = new FirefoxDriver();
                     break;
                 }
-                case "edge": {
+                default: {
                     WebDriverManager.edgedriver().setup();
                     driver = new EdgeDriver();
-                    break;
-                }
-                default: {
-                    WebDriverManager.chromedriver().setup();
-                    driver = new ChromeDriver();
                     break;
                 }
             }

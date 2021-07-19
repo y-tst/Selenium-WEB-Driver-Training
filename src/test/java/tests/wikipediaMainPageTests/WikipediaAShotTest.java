@@ -7,7 +7,7 @@ import tests.BaseTest;
 
 import java.io.IOException;
 
-public class WikipediaAShhotTest extends BaseTest {
+public class WikipediaAShotTest extends BaseTest {
 
     @Test
     public void wikipediaImageIsValidCheck() throws IOException {

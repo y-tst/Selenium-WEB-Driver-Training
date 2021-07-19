@@ -15,6 +15,12 @@ public class JQueryUAHomePage extends BasePage {
     @FindBy(xpath = "//a[@href='/resources/demos/draggable/default.html']")
     private WebElement basicFunctionalityCase;
 
+    @FindBy(xpath = "//input[@name='s']")
+    private  WebElement searchField;
+
+    @FindBy(xpath = "//span[@class='algolia-docsearch-suggestion--highlight']")
+    private WebElement firstSuggestion;
+
     public JQueryUAHomePage(WebDriver driver) {
         super(driver);
     }
@@ -41,5 +47,14 @@ public class JQueryUAHomePage extends BasePage {
         draggableSubItem.click();
 
         return driver.getCurrentUrl();
+    }
+
+    public SearchResultPage fillInSearchField(String searchTerm){
+        waitForElementVisibility(searchField);
+        searchField.sendKeys(searchTerm);
+        waitForElementVisibility(firstSuggestion);
+        firstSuggestion.click();
+
+        return new SearchResultPage(driver);
     }
 }
