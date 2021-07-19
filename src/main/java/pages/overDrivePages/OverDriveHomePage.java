@@ -13,6 +13,9 @@ public class OverDriveHomePage extends BasePage {
     @FindBy(xpath = "//li[@id='account-trigger']")
     private WebElement userIcon;
 
+    @FindBy(xpath = "//a[@href='/explore']")
+    private WebElement browseCollections;
+
     public OverDriveHomePage(WebDriver driver) {
         super(driver);
     }
@@ -30,5 +33,11 @@ public class OverDriveHomePage extends BasePage {
         waitForElementVisibility(userIcon);
 
         return userIcon.getText();
+    }
+
+    public OverDriveBooksCollectionsPage openBooksCollectionsPage() {
+        browseCollections.click();
+
+        return new OverDriveBooksCollectionsPage(driver);
     }
 }

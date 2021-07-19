@@ -13,6 +13,8 @@
         <maven.compiler.target>1.8</maven.compiler.target>
         <allure.version>1.5.4</allure.version>
         <aspectj.version>1.9.6</aspectj.version>
+        <cucumber.version>5.3.0</cucumber.version>
+        <selenium.version>3.141.59</selenium.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
@@ -20,29 +22,29 @@
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
-            <version>3.141.59</version>
+            <version>${selenium.version}</version>
         </dependency>
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-api</artifactId>
-            <version>3.141.59</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>io.github.bonigarcia</groupId>
-            <artifactId>webdrivermanager</artifactId>
-            <version>3.7.1</version>
+            <version>${selenium.version}</version>
+            <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
-            <version>6.14.3</version>
-            <scope>test</scope>
+            <version>7.4.0</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.github.bonigarcia</groupId>
+            <artifactId>webdrivermanager</artifactId>
+            <version>4.3.0</version>
         </dependency>
         <dependency>
             <groupId>ru.yandex.qatools.ashot</groupId>
             <artifactId>ashot</artifactId>
-            <version>1.5.4</version>
+            <version>${allure.version}</version>
         </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
@@ -74,6 +76,21 @@
             <artifactId>allure-testng-adaptor</artifactId>
             <version>${allure.version}</version>
         </dependency>
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-testng</artifactId>
+            <version>${cucumber.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-java</artifactId>
+            <version>${cucumber.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-core</artifactId>
+            <version>${cucumber.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -94,12 +111,11 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>2.22.2</version>
                 <configuration>
+                    <parallel>methods</parallel>
+                    <useUnlimitedThreads>true</useUnlimitedThreads>
                     <systemPropertyVariables>
                         <allure.results.directory>target/allure-results</allure.results.directory>
                     </systemPropertyVariables>
-                    <suiteXmlFiles>
-                        <suiteXmlFile>src/test/resources/general.xml</suiteXmlFile>
-                    </suiteXmlFiles>
                     <testFailureIgnore>true</testFailureIgnore>
                     <argLine>
                         -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"

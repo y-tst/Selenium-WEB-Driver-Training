@@ -8,7 +8,6 @@ import org.openqa.selenium.support.FindBy;
 import pages.BasePage;
 
 public class DraggableSimulationPage extends BasePage {
-    private WebElement basicFunctionalityCase;
 
     @FindBy(xpath = "//iframe[@class='demo-frame']")
     private WebElement defaultDraggableFrame;
