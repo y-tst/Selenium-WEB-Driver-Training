@@ -8,7 +8,7 @@ import pages.googlePages.GoogleHomePage;
 public class GoogleSearchResultLengthTest extends BaseTest {
 
     @Test
-    public void googleSearchIsCorrectCheck() {
+    public void googleSearchLengthCheck() {
 
         int searchResultPageLength = new GoogleHomePage(driver)
                 .pageOpener()

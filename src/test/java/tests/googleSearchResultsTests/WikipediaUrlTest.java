@@ -8,7 +8,7 @@ import pages.googlePages.GoogleHomePage;
 public class WikipediaUrlTest extends BaseTest {
 
     @Test
-    public void googleSearchIsCorrectCheck() {
+    public void googleSearchResultPageUrlCheck() {
 
         String googleForWikipediaSearchPageUrl = new GoogleHomePage(driver)
                 .pageOpener()

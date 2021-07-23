@@ -8,7 +8,7 @@ import pages.googlePages.GoogleHomePage;
 public class WikipediaPageTitleTest extends BaseTest {
 
     @Test
-    public void googleSearchIsCorrectCheck() {
+    public void googleSearchResultPageTitleCheck() {
 
         String expectedGoogleForWikipediaSearchPagetitle = new GoogleHomePage(driver)
                 .pageOpener()

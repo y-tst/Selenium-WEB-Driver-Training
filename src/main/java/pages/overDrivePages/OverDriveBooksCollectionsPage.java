@@ -19,10 +19,6 @@ public class OverDriveBooksCollectionsPage extends BasePage {
         return this;
     }
 
-    public String booksCollectionPageTitle() {
-        return driver.getTitle();
-    }
-
     public OverDriveBooksCollectionsPage openHistoryBooks(){
         historicalBooks.click();
 
