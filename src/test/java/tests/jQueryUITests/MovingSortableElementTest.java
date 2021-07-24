@@ -8,7 +8,7 @@ import tests.BaseTest;
 public class MovingSortableElementTest extends BaseTest {
 
     @Test
-    public void moveFirstItemToPlaceOfThird() {
+    public void firstItemToPlaceOfThirdMovementCheck() {
 
         String firstItemNameAfterMoving = new SortablePlaceholderPage(driver)
                 .pageOpener()
