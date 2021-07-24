@@ -12,11 +12,11 @@ public class ResponseBodyForGetRequestTest extends BaseTestForWebServices {
 
     @Test
     public void checkResponseBody() {
-        Response reponse = RestAssured.when()
+        Response response = RestAssured.when()
                 .get("/users")
 
                 .andReturn();
-        ResponseBody<?> responseBody = reponse.getBody();
+        ResponseBody<?> responseBody = response.getBody();
         UserObject[] users = responseBody.as(UserObject[].class);
 
         logger.info(String.format("The quantity of 'User' objects is: %s", users.length));
